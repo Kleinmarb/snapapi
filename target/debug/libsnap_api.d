@@ -1,0 +1,1 @@
+C:\Users\selim\CLionProjects\SnapAPI\target\debug\libsnap_api.rlib: C:\Users\selim\CLionProjects\SnapAPI\src\app.rs C:\Users\selim\CLionProjects\SnapAPI\src\http.rs C:\Users\selim\CLionProjects\SnapAPI\src\lib.rs C:\Users\selim\CLionProjects\SnapAPI\src\utils.rs

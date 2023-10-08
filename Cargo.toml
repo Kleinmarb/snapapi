@@ -1,0 +1,13 @@
+[package]
+name = "snapapi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fxhash = "0.2.1"
+threadpool = "1.8.1"
+byteorder = "1.4.3"
+
+[profile.release]
+lto = true
+opt-level = "z"
