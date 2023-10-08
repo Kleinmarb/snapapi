@@ -1,6 +1,6 @@
 use std::net::TcpStream;
 use crate::mysql::phases::command::send_command;
-use threadpool::ThreadPool;
+use threatpool::ThreadPool;
 
 pub struct Cursor {
     stream: TcpStream,

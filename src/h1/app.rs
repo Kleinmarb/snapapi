@@ -1,4 +1,4 @@
-use threadpool::ThreadPool;
+use threatpool::ThreadPool;
 use fxhash::FxHashMap;
 use std::net::TcpListener;
 use crate::h1::{
