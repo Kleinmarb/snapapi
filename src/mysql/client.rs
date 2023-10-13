@@ -24,26 +24,31 @@ impl MySQL {
         }
     }
 
+    #[inline]
     pub fn db(&mut self, db: &str) -> &mut Self {
         self.db = Some(db.to_owned());
         self
     }
 
+    #[inline]
     pub fn port(&mut self, port: u16) -> &mut Self {
         self.port = port;
         self
     }
 
+    #[inline]
     pub fn password(&mut self, password: &str) -> &mut Self {
         self.password = Some(password.to_owned());
         self
     }
 
+    #[inline]
     pub fn username(&mut self, username: &str) -> &mut Self {
         self.username = Some(username.to_owned());
         self
     }
 
+    #[inline]
     pub fn size(&mut self, size: usize) -> &mut Self {
         self.size = size;
         self

@@ -17,6 +17,7 @@ impl SnapAPI {
         }
     }
 
+    #[inline]
     pub fn route(&mut self, path: &str, handler: http::Handler) -> &mut Self {
         self.routes.insert(path.to_owned(), handler);
         self
