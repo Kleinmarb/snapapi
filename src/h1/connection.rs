@@ -38,8 +38,8 @@ fn handle_route_response(route: Option<http::Handler>, query_params: http::Query
                 http::Response::Plain(content) => {
                     format!("HTTP/1.1 200 OK\r\n\r\n{}", content)
                 },
-                http::Response::StatusCode((code, detail)) => {
-                    format!("HTTP/1.1 {}\r\n\r\n{}", code, detail)
+                http::Response::StatusCode(code, detail) => {
+                    format!("HTTP/1.1 {} {}\r\n\r\n", code, detail)
                 }
             }
         }

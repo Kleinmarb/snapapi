@@ -7,5 +7,15 @@ pub(crate) type Routes = FxHashMap<String, Handler>;
 #[allow(dead_code)]
 pub enum Response {
     Plain(String),
-    StatusCode((String, String)),
+    StatusCode(String, String),
+}
+
+#[allow(unused)]
+impl Response {
+    pub fn from_status_code(status_code: i16, detail: &str) -> Self {
+        Self::StatusCode(
+            status_code.to_string(),
+            detail.to_owned(),
+        )
+    }
 }
