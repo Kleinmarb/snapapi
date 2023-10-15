@@ -2,9 +2,53 @@
 SnapAPI is a blazing fast Rust framework which provides a simple way of creating CRUD APIs by offering HTTP servers and SQL clients.
 
 ``
+ use snapapi::{
+   mysql::{
+     self,
+     MySQL,
+   },
 
- 
+   h1::{
+     SnapAPI,
+     http,
+   },
+ };
+
+ fn add_user(query: http::QueryParams, cursor: mysql::Cursor) -> http::Response {
+   let name = match query.get("name") {
+     None => {
+       return http::Response::from_status_code(403, "please provide a name");
+     },
+
+     Some(name) => name,
+   };
+
+   let age = match query.get("age") {
+     None => {
+       return http::Response::from_status_code(403, "please provide an age");
+     },
+
+     Some(age) => age,
+   };
+
+   cursor.query(format!("INSERT INTO users (name, age) VALUES ({name}, {age})"));
+   http::Response::Plain("Done!")
+ }
+
+ fn main() {
+   let database = MySQL::new()
+     .db("snapapi")
+     .username("root")
+     .password("my-secret-password");
+   let cursor = database.connect(32);
+
+   SnapAPI::new()
+     .cursor(cursor)
+     .route("/add-user", add_user)
+     .run(32);
+ }
 ``
+
 ## What it provides
 - Extremely low dependency count
 - Supports HTTP/1.1, HTTP/2 and HTTP/3 server and client
