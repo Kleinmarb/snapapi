@@ -1,10 +1,8 @@
 use threatpool::ThreadPool;
 use fxhash::FxHashMap;
 use std::net::TcpListener;
-use crate::h1::{
-    http,
-    connection::handle_client,
-};
+use crate::h1::http;
+use crate::h1::server::connection::handle_client;
 
 pub struct SnapAPI {
     routes: http::Routes,

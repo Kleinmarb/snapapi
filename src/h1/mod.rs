@@ -1,6 +1,3 @@
-mod app;
-mod connection;
-mod utils;
+pub mod server;
+pub mod client;
 pub mod http;
-
-pub use app::SnapAPI;

@@ -1,8 +1,8 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
-use crate::h1::{
+use crate::h1::http;
+use crate::h1::server::{
     utils::*,
-    http,
 };
 
 pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
