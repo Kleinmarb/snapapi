@@ -8,13 +8,21 @@ use crate::h1::{
 
 pub struct SnapAPI {
     routes: http::Routes,
+    port: u16,
 }
 
 impl SnapAPI {
     pub fn new() -> Self {
         Self {
             routes: FxHashMap::default(),
+            port: 7878,
         }
+    }
+
+    #[inline]
+    pub fn port(&mut self, port: u16) -> &mut Self {
+        self.port = port;
+        self
     }
 
     #[inline]
@@ -24,7 +32,7 @@ impl SnapAPI {
     }
 
     pub fn run(&self, size: usize) {
-        let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+        let listener = TcpListener::bind(format!("127.0.0.1:{}", self.port)).unwrap();
         let pool = ThreadPool::new(size);
 
         loop {
