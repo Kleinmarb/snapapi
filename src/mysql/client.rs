@@ -8,7 +8,6 @@ pub struct MySQL {
     password: Option<String>,
     username: Option<String>,
     port: u16,
-    size: usize,
 }
 
 #[allow(dead_code)]
@@ -20,7 +19,6 @@ impl MySQL {
             password: None,
             username: None,
             port: 3306,
-            size: 0,
         }
     }
 
@@ -48,15 +46,9 @@ impl MySQL {
         self
     }
 
-    #[inline]
-    pub fn size(&mut self, size: usize) -> &mut Self {
-        self.size = size;
-        self
-    }
-
-    pub fn connect(&mut self) -> Cursor {
-        if self.size == 0 {
-            panic!("please enter a size")
+    pub fn connect(&mut self, workers: usize) -> Cursor {
+        if workers == 0 {
+            panic!("please enter a size bigger than 0")
         }
 
         if self.username.is_none() {
@@ -82,6 +74,6 @@ impl MySQL {
             self.password.as_mut().unwrap()
         );
 
-        Cursor::new(self.stream.as_mut().unwrap().try_clone().unwrap(), self.size)
+        Cursor::new(self.stream.as_mut().unwrap().try_clone().unwrap(), workers)
     }
 }

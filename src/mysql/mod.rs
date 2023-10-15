@@ -3,3 +3,4 @@ mod client;
 mod cursor;
 
 pub use client::MySQL;
+pub use cursor::Cursor;
