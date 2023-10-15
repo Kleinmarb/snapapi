@@ -24,7 +24,6 @@ fn handle_request(request: String, routes: http::Routes) -> String {
 
 fn handle_route(query_pairs: http::QueryParams, path: &str, routes: http::Routes) -> String {
     let handler = routes.get(path);
-
     handle_route_response(handler.copied(), query_pairs)
 }
 
