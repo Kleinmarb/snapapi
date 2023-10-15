@@ -12,7 +12,7 @@ pub enum Response {
 
 #[allow(unused)]
 impl Response {
-    pub fn from_status_code(status_code: i16, detail: &str) -> Self {
+    pub fn from_status_code(status_code: u16, detail: &str) -> Self {
         Self::StatusCode(
             status_code.to_string(),
             detail.to_owned(),
