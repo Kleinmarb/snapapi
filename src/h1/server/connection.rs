@@ -8,9 +8,11 @@ use crate::h1::server::{
 pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
     let mut buffer = [0; 1024];
     stream.read(&mut buffer).unwrap();
-    let request = &String::from_utf8_lossy(&buffer[..]);
+    let request = String::from_utf8_lossy(&buffer[..]).to_string();
 
-    let response = handle_request(request.to_string(), routes);
+    println!("{request}");
+
+    let response = handle_request(request, routes);
     stream.write(response.as_bytes()).unwrap();
 }
 
