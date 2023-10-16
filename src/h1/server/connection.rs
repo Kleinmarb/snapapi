@@ -10,8 +10,6 @@ pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
     stream.read(&mut buffer).unwrap();
     let request = String::from_utf8_lossy(&buffer[..]).to_string();
 
-    println!("{request}");
-
     let response = handle_request(request, routes);
     stream.write(response.as_bytes()).unwrap();
 }
