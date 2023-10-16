@@ -1,2 +1,4 @@
 pub(crate) mod connection;
-pub mod client;
+mod client;
+
+pub use client::get;
