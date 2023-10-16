@@ -10,7 +10,7 @@ pub(crate) fn request_server(uri: &str) -> String {
 }
 
 fn get_response(mut stream: TcpStream) -> String {
-    let mut buffer = &[0; 1024];
+    let mut buffer = [0; 1024];
     stream.read(&mut buffer).unwrap();
-    String::from_utf8_lossy(buffer).to_string()
+    String::from_utf8_lossy(&buffer[..]).to_string()
 }
