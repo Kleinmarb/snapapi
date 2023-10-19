@@ -17,5 +17,5 @@ fn get_response(mut stream: TcpStream) -> String {
     stream.read(&mut buffer).unwrap();
 
     let response = String::from_utf8_lossy(&buffer[..]).to_string();
-    response // Format for the end user before returning
+    response
 }

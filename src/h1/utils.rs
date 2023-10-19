@@ -24,6 +24,7 @@ pub(crate) fn extract_query_params(path: &str) -> http::QueryParams {
             }
         }
     }
+
     result
 }
 
@@ -36,4 +37,21 @@ pub(crate) fn extract_ip_and_path(uri: &str) -> (&str, &str) {
     }
 
     (&uri, "")
+}
+
+#[inline]
+pub(crate) fn extract_status_code_and_content(http_response: &str) -> (u16, &str) {
+    let mut parts = http_response.split("\r\n\r\n");
+    let header = parts.next().unwrap_or("");
+    let content = parts.next().unwrap_or("");
+
+    let status_line = header.lines().next().unwrap_or("");
+    let status_code: u16 = status_line
+        .split(' ')
+        .nth(1)
+        .unwrap_or("0")
+        .parse()
+        .unwrap_or(0);
+
+    (status_code, content)
 }
