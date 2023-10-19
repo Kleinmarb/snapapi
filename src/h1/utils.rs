@@ -40,7 +40,7 @@ pub(crate) fn extract_ip_and_path(uri: &str) -> (&str, &str) {
 }
 
 #[inline]
-pub(crate) fn extract_status_code_and_content(http_response: &str) -> (u16, &str) {
+pub(crate) fn extract_content_and_status_code(http_response: String) -> (String, u16) {
     let mut parts = http_response.split("\r\n\r\n");
     let header = parts.next().unwrap_or("");
     let content = parts.next().unwrap_or("");
@@ -53,5 +53,5 @@ pub(crate) fn extract_status_code_and_content(http_response: &str) -> (u16, &str
         .parse()
         .unwrap_or(0);
 
-    (status_code, content)
+    (content.to_owned(), status_code)
 }

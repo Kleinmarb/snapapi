@@ -1,8 +1,8 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
-use crate::h1::utils::extract_ip_and_path;
+use crate::h1::utils::{extract_content_and_status_code, extract_ip_and_path};
 
-pub(crate) fn request_server(uri: &str) -> String {
+pub(crate) fn request_server(uri: &str) -> (String, u16) {
     let (ip, path) = extract_ip_and_path(uri);
 
     let mut stream = TcpStream::connect(ip).expect("uri is not available");
@@ -12,10 +12,10 @@ pub(crate) fn request_server(uri: &str) -> String {
     response
 }
 
-fn get_response(mut stream: TcpStream) -> String {
+fn get_response(mut stream: TcpStream) -> (String, u16) {
     let mut buffer = [0; 1024];
     stream.read(&mut buffer).unwrap();
 
     let response = String::from_utf8_lossy(&buffer[..]).to_string();
-    response
+    extract_content_and_status_code(response)
 }
