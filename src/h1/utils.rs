@@ -28,7 +28,7 @@ pub(crate) fn extract_query_params(path: &str) -> http::QueryParams {
 }
 
 #[inline]
-fn extract_ip_and_path(uri: &str) -> (&str, &str) {
+pub(crate) fn extract_ip_and_path(uri: &str) -> (&str, &str) {
     if let Some(start) = uri.find("http://") {
         if let Some(end) = uri[start + 7..].find('/') {
             return (&uri[start + 7..start + 7 + end], &uri[start + 7 + end..]);
