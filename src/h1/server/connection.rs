@@ -1,7 +1,7 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
 use crate::h1::http;
-use crate::h1::utils::{extract_path, parse_query_string};
+use crate::h1::utils::{extract_path, extract_query_params};
 
 
 pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
@@ -16,7 +16,7 @@ pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
 fn handle_request(request: String, routes: http::Routes) -> String {
     let headers: Vec<&str> = request.split("\r\n").collect();
     let path = extract_path(headers);
-    let query_pairs = parse_query_string(&path);
+    let query_pairs = extract_query_params(&path);
     let stripped_path: &str = path.split('?').next().unwrap_or(&path);
     handle_route(query_pairs, stripped_path, routes)
 }

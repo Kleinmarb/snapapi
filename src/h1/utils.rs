@@ -15,7 +15,7 @@ pub(crate) fn extract_path(headers: Vec<&str>) -> String {
 }
 
 #[inline]
-pub(crate) fn parse_query_string(path: &str) -> http::QueryParams {
+pub(crate) fn extract_query_params(path: &str) -> http::QueryParams {
     let mut result: http::QueryParams = FxHashMap::default();
     if let Some(query) = path.split('?').nth(1) {
         for pair in query.split('&') {
