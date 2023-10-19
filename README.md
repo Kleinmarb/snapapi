@@ -67,3 +67,4 @@ SnapAPI is a blazing fast Rust framework which provides a simple way of creating
 - SnapAPI is only meant for localhost as you can see in what it doesn't provide!
 - SnapAPI isn't meant for backend web apps as you can see in what it doesn't provide
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
+- Please only use the http clients provided by SnapAPI for the http servers from SnapAPI (you can use any http client for a SnapAPI http server)
