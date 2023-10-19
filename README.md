@@ -69,5 +69,6 @@ SnapAPI is a blazing fast Rust framework which provides a simple way of creating
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
 - Please only use the http clients provided by SnapAPI for the http servers from SnapAPI:
   > since they are designed to work specifically with SnapAPIs http servers 
+  > 
   > since they will give you an insane speed-up for SnapAPIs http servers
   > but you can use any http client for a SnapAPI http server
