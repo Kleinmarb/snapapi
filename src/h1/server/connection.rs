@@ -1,9 +1,8 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
 use crate::h1::http;
-use crate::h1::server::{
-    utils::*,
-};
+use crate::h1::utils::{extract_path, parse_query_string};
+
 
 pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
     let mut buffer = [0; 1024];
