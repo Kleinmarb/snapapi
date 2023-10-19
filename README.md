@@ -3,15 +3,8 @@ SnapAPI is a blazing fast Rust framework which provides a simple way of creating
 
 ```rust
  use snapapi::{
-   mysql::{
-     self,
-     MySQL,
-   },
-
-   h1::{
-     SnapAPI,
-     http,
-   },
+    mysql::{self, MySQL}, 
+    h1::{SnapAPI, http}
  };
 
  fn add_user(query: http::QueryParams, cursor: mysql::Cursor) -> http::Response {
