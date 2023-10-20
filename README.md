@@ -1,5 +1,5 @@
 # SnapAPI
-SnapAPI is a blazing fast Rust framework which provides a simple way of creating CRUD APIs by offering HTTP servers and SQL clients.
+SnapAPI is a blazingly fast Rust framework which provides a simple way of creating CRUD APIs by offering HTTP servers and SQL clients.
 
 ```rust
 use snapapi::{
