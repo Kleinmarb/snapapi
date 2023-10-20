@@ -57,8 +57,8 @@ SnapAPI is a blazing fast Rust framework which provides a simple way of creating
 ## Usage
 > To use actix, add this to your Cargo.toml:
 ```toml
- [dependencies]
- snapapi = "0.0.1"
+[dependencies]
+snapapi = "0.0.1"
 ```
 
 ## What it doesn't provide
