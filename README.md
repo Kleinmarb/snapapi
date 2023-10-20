@@ -76,7 +76,7 @@ cargo add snapapi
 - SnapAPI is only meant for localhost as you can see in what it doesn't provide!
 - SnapAPI isn't meant for backend web apps as you can see in what it doesn't provide
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
-- SnapAPI doesn't allow for compression since for crud apis, compression would lead to worse performance 
+- SnapAPI doesn't allow for compression since for lightweight protocol implementations, compression would lead to worse performance 
 - Please only use the HTTP clients provided by SnapAPI for the HTTP servers from SnapAPI:
   > Since they are designed to work specifically with SnapAPIs HTTP servers 
 
