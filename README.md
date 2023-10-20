@@ -72,7 +72,7 @@ cargo add snapapi
 - No support for setting custom headers
 - No support for compression 
 
-## Warning
+## Disclaimer
 - SnapAPI is only meant for localhost as you can see in what it doesn't provide!
 - SnapAPI isn't meant for backend web apps as you can see in what it doesn't provide
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
