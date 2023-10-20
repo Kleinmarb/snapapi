@@ -1,4 +1,4 @@
-use fxhash::FxHashMap;
+use rustc_hash::FxHashMap;
 
 pub type QueryParams = FxHashMap<String, String>;
 pub(crate) type Handler = fn(QueryParams) -> Response;

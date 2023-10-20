@@ -1,5 +1,5 @@
 use crate::h1::http;
-use fxhash::FxHashMap;
+use rustc_hash::FxHashMap;
 
 #[inline]
 pub(crate) fn extract_path(headers: Vec<&str>) -> String {

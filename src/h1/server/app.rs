@@ -1,5 +1,5 @@
 use threatpool::ThreadPool;
-use fxhash::FxHashMap;
+use rustc_hash::FxHashMap;
 use std::net::TcpListener;
 use crate::h1::http;
 use crate::h1::server::connection::handle_client;
