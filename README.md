@@ -47,7 +47,7 @@ fn main() {
 }
 ```
 
-## What it provides
+## Features
 - Extremely low dependency count
 - Supports HTTP/1.1, HTTP/2 and HTTP/3 server and client
 - Supports MySQL and Postgresql client
@@ -72,7 +72,7 @@ cargo add snapapi
 - No support for setting custom headers
 - No support for compression 
 
-## Note
+## Warning
 - SnapAPI is only meant for localhost as you can see in what it doesn't provide!
 - SnapAPI isn't meant for backend web apps as you can see in what it doesn't provide
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
