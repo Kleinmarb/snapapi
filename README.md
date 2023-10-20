@@ -84,11 +84,6 @@ cargo add snapapi
 
   > But you can use any http client for a SnapAPI HTTP server
 
-## Custom protocol
-- Snapapi implements a custom application layer protocol built on top of tcp
-- This custom protocol enables even crazier speeds 
-- Its server can only be used by its client
-
 ## License
 This project is licensed under either of
 
