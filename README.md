@@ -55,10 +55,14 @@ fn main() {
 - 100% save code
 
 ## Usage
-> To use actix, add this to your Cargo.toml:
+> To use snapapi, add this to your Cargo.toml:
 ```toml
 [dependencies]
 snapapi = "0.0.1"
+```
+> or type this into your terminal:
+```text
+cargo add snapapi
 ```
 
 ## What it doesn't provide
