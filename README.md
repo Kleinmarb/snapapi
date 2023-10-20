@@ -60,7 +60,7 @@ fn main() {
 [dependencies]
 snapapi = "0.0.1"
 ```
-> or type this into your terminal:
+> Or type this into your terminal:
 ```text
 cargo add snapapi
 ```
@@ -78,11 +78,11 @@ cargo add snapapi
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
 - SnapAPI doesn't allow for compression since for crud apis, compression would lead to worse performance 
 - Please only use the HTTP clients provided by SnapAPI for the HTTP servers from SnapAPI:
-  > since they are designed to work specifically with SnapAPIs HTTP servers 
+  > Since they are designed to work specifically with SnapAPIs HTTP servers 
 
-  > since they will give you an insane speed-up for SnapAPIs HTTP servers
+  > Since they will give you an insane speed-up for SnapAPIs HTTP servers
 
-  > but you can use any http client for a SnapAPI HTTP server
+  > But you can use any http client for a SnapAPI HTTP server
 
 ## Custom protocol
 - Snapapi implements a custom application layer protocol built on top of tcp
