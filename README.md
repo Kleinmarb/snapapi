@@ -3,8 +3,8 @@ SnapAPI is a blazingly fast Rust framework which provides a simple way of creati
 
 ```rust
 use snapapi::{
-   mysql::{self, MySQL}, 
-   h1::{SnapAPI, http}
+   mysql::{self, MySQL},
+   http::{self, SnapAPI}
 };
 
 fn add_user(query: http::QueryParams, cursor: mysql::Cursor) -> http::Response {
@@ -49,8 +49,8 @@ fn main() {
 
 ## Features
 - Extremely low dependency count
-- Supports HTTP/1.1, HTTP/2 and HTTP/3 server and client
-- Supports MySQL and Postgresql client
+- Implements HTTP/1.1 server and client
+- Implements MySQL and Postgresql client
 - Runs on stable Rust
 - 100% save code
 
@@ -74,15 +74,15 @@ cargo add snapapi
 
 ## Disclaimer
 - SnapAPI is only meant for localhost as you can see in what it doesn't provide!
-- SnapAPI isn't meant for backend web apps as you can see in what it doesn't provide
+- SnapAPI isn't meant for web apps as you can see in what it doesn't provide
 - SnapAPIs protocol implementations are mostly lightweight which allows for extreme speeds
 - SnapAPI doesn't allow for compression since for lightweight protocol implementations, compression would lead to worse performance 
-- Please only use the HTTP clients provided by SnapAPI for the HTTP servers from SnapAPI:
-  > Since they are designed to work specifically with SnapAPIs HTTP servers 
+- Please only use SnapAPIs HTTP client for SnapAPIs HTTP server:
+  > Since this HTTP client is designed to work specifically with SnapAPIs HTTP server
 
-  > Since they will give you an insane speed-up for SnapAPIs HTTP servers
+  > Since this HTTP client will give you an insane speed-up for SnapAPIs HTTP server
 
-  > But you can use any http client for a SnapAPI HTTP server
+  > But you can use any HTTP client for SnapAPIs HTTP server
 
 ## License
 This project is licensed under either of
