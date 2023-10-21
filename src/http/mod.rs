@@ -1,4 +1,6 @@
 pub mod server;
 pub mod client;
-pub mod http;
+mod http;
 pub(crate) mod utils;
+
+pub use http::*;
