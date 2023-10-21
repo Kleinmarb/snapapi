@@ -1,6 +1,6 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
-use crate::h1::utils::{extract_content_and_status_code, extract_ip_and_path};
+use crate::http::utils::{extract_content_and_status_code, extract_ip_and_path};
 
 pub(crate) fn request_server(uri: &str) -> (String, u16) {
     let (ip, path) = extract_ip_and_path(uri);

@@ -1,7 +1,7 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
-use crate::h1::http;
-use crate::h1::utils::{extract_path, extract_query_params};
+use crate::http::http;
+use crate::http::utils::{extract_path, extract_query_params};
 
 
 pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
