@@ -91,3 +91,8 @@ This project is licensed under either of
 - MIT license (LICENSE-MIT or https://opensource.org/licenses/MIT)
 
 at your option.
+
+### Teaser
+- HTTP/3 and HTTP/2 server and client implementation might follow soon
+- SQLite and SQLServer client implementation might follow soon
+- Custom Protocol might follow soon
