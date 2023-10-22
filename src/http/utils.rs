@@ -3,20 +3,14 @@ use rustc_hash::FxHashMap;
 
 #[inline]
 pub(crate) fn extract_path(headers: Vec<&str>) -> &str {
-    match headers.get(0) {
-        Some(request_line) => {
-            match request_line.split_whitespace().collect::<Vec<&str>>().as_slice() {
-                [_, path, ..] => {
-                    let path = path.split('?').next().unwrap_or(&path);
-                    path
-                },
-
-                _ => "",
-            }
-        },
-
-        None => "",
+    if let Some(request_line) = headers.get(0) {
+        if let [_, path, ..] = request_line.split_whitespace().collect::<Vec<&str>>().as_slice() {
+            let path = path.split('?').next().unwrap_or(&path);
+            return path;
+        }
     }
+
+    ""
 }
 
 #[inline]
