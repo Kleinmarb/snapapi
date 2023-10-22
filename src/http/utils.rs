@@ -1,4 +1,4 @@
-use crate::http::http;
+use crate::http;
 use rustc_hash::FxHashMap;
 
 #[inline]

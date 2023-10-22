@@ -1,7 +1,7 @@
 use threatpool::ThreadPool;
 use rustc_hash::FxHashMap;
 use std::net::TcpListener;
-use crate::http::http;
+use crate::http;
 use crate::http::server::connection::handle_client;
 
 pub struct SnapAPI {
