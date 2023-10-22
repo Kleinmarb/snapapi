@@ -15,23 +15,21 @@ pub(crate) fn handle_client(mut stream: TcpStream, routes: http::Routes) {
 
 fn handle_request(request: String, routes: http::Routes) -> String {
     let headers: Vec<&str> = request.split("\r\n").collect();
+
     let path = extract_path(headers);
     let query_pairs = extract_query_params(&path);
-    let stripped_path: &str = path.split('?').next().unwrap_or(&path);
-    handle_route(query_pairs, stripped_path, routes)
+
+    handle_route(query_pairs, path, routes)
 }
 
 fn handle_route(query_pairs: http::QueryParams, path: &str, routes: http::Routes) -> String {
-    let handler = routes.get(path);
-    handle_route_response(handler.copied(), query_pairs)
-}
+    let route = routes.get(path);
 
-fn handle_route_response(route: Option<http::Handler>, query_params: http::QueryParams) -> String {
     match route {
         None => "HTTP/1.1 404 Not Found".to_owned(),
 
         Some(handler) => {
-            let response = handler(query_params);
+            let response = handler(query_pairs);
             match response {
                 http::Response::Plain(content) => {
                     format!("HTTP/1.1 200 OK\r\n\r\n{}", content)

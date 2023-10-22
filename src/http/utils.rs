@@ -2,15 +2,20 @@ use crate::http::http;
 use rustc_hash::FxHashMap;
 
 #[inline]
-pub(crate) fn extract_path(headers: Vec<&str>) -> String {
+pub(crate) fn extract_path(headers: Vec<&str>) -> &str {
     match headers.get(0) {
         Some(request_line) => {
             match request_line.split_whitespace().collect::<Vec<&str>>().as_slice() {
-                [_, path, ..] => path.to_string(),
-                _ => String::new(),
+                [_, path, ..] => {
+                    let path = path.split('?').next().unwrap_or(&path);
+                    path
+                },
+
+                _ => "",
             }
-        }
-        None => String::new(),
+        },
+
+        None => "",
     }
 }
 
