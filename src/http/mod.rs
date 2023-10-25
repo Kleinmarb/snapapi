@@ -6,7 +6,6 @@ use rustc_hash::FxHashMap;
 
 pub type QueryParams = FxHashMap<String, String>;
 pub(crate) type Handler = fn(QueryParams) -> Response;
-pub(crate) type Routes = FxHashMap<String, Handler>;
 
 pub enum Response {
     Plain(String),
@@ -21,3 +20,5 @@ impl Response {
         )
     }
 }
+
+pub(crate) Route

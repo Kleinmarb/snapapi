@@ -2,7 +2,7 @@ use crate::http;
 use rustc_hash::FxHashMap;
 
 #[inline]
-pub(crate) fn extract_path(headers: Vec<&str>) -> &str {
+pub(crate) fn extract_route(headers: Vec<&str>) -> &str {
     if let Some(request_line) = headers.get(0) {
         if let [_, path, ..] = request_line.split_whitespace().collect::<Vec<&str>>().as_slice() {
             let path = path.split('?').next().unwrap_or(&path);
@@ -53,4 +53,14 @@ pub(crate) fn extract_content_and_status_code(http_response: String) -> (String,
         .unwrap_or(0);
 
     (content.to_owned(), status_code)
+}
+
+#[inline]
+pub(crate) fn get_handler_by_route(routes: Vec<(String, http::Handler)>, route: &str) -> Option<http::Handler> {
+    for (stored_route, handler) in routes {
+        if stored_route == route {
+            return Some(*handler);
+        }
+    }
+    None
 }

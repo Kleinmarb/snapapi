@@ -1,18 +1,17 @@
 use threatpool::ThreadPool;
-use rustc_hash::FxHashMap;
 use std::net::TcpListener;
 use crate::http;
 use crate::http::server::connection::handle_client;
 
 pub struct SnapAPI {
-    routes: http::Routes,
+    routes: Vec<(String, http::Handler)>,
     port: u16,
 }
 
 impl SnapAPI {
     pub fn new() -> Self {
         Self {
-            routes: FxHashMap::default(),
+            routes: Vec::new(),
             port: 7878,
         }
     }
@@ -25,7 +24,7 @@ impl SnapAPI {
 
     #[inline]
     pub fn route(&mut self, path: &str, handler: http::Handler) -> &mut Self {
-        self.routes.insert(path.to_owned(), handler);
+        self.routes.push((path.to_owned(), handler));
         self
     }
 
