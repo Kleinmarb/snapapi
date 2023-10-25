@@ -1,10 +1,10 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
 use crate::http;
-use crate::http::utils::{extract_route, extract_query_params, get_handler_by_route};
+use crate::http::utils::{extract_path, extract_query_params, get_handler_by_path};
 
 
-pub(crate) fn handle_client(mut stream: TcpStream, routes: Vec<(String, http::Handler)>) {
+pub(crate) fn handle_client(mut stream: TcpStream, routes: Vec<http::Route>) {
     let mut buffer = [0; 1024];
     stream.read(&mut buffer).unwrap();
     let request = String::from_utf8_lossy(&buffer[..]).to_string();
@@ -13,17 +13,17 @@ pub(crate) fn handle_client(mut stream: TcpStream, routes: Vec<(String, http::Ha
     stream.write(response.as_bytes()).unwrap();
 }
 
-fn handle_request(request: String, routes: Vec<(String, http::Handler)>) -> String {
+fn handle_request(request: String, routes: Vec<http::Route>) -> String {
     let headers: Vec<&str> = request.split("\r\n").collect();
 
-    let route = extract_route(headers);
-    let query_pairs = extract_query_params(&route);
+    let path = extract_path(headers);
+    let query_pairs = extract_query_params(&path);
 
-    handle_route(query_pairs, route, routes)
+    handle_route(query_pairs, path, routes)
 }
 
-fn handle_route(query_pairs: http::QueryParams, route: &str, routes: Vec<(String, http::Handler)>) -> String {
-    let route = get_handler_by_route(routes, route);
+fn handle_route(query_pairs: http::QueryParams, path: &str, routes: Vec<http::Route>) -> String {
+    let route = get_handler_by_path(routes, path);
 
     match route {
         None => "HTTP/1.1 404 Not Found".to_owned(),

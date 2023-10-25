@@ -4,7 +4,7 @@ use crate::http;
 use crate::http::server::connection::handle_client;
 
 pub struct SnapAPI {
-    routes: Vec<(String, http::Handler)>,
+    routes: Vec<http::Route>,
     port: u16,
 }
 
@@ -24,7 +24,7 @@ impl SnapAPI {
 
     #[inline]
     pub fn route(&mut self, path: &str, handler: http::Handler) -> &mut Self {
-        self.routes.push((path.to_owned(), handler));
+        self.routes.push(http::Route { path: path.to_owned(), handler });
         self
     }
 

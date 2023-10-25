@@ -21,4 +21,8 @@ impl Response {
     }
 }
 
-pub(crate) Route
+#[derive(Clone)]
+pub(crate) struct Route {
+    path: String,
+    handler: Handler,
+}
