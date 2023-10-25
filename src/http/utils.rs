@@ -1,3 +1,4 @@
+use std::sync::Arc;
 use crate::http;
 use rustc_hash::FxHashMap;
 
@@ -56,8 +57,8 @@ pub(crate) fn extract_content_and_status_code(http_response: String) -> (String,
 }
 
 #[inline]
-pub(crate) fn get_handler_by_path(routes: Vec<http::Route>, path: &str) -> Option<http::Handler> {
-    for route in routes {
+pub(crate) fn get_handler_by_path(routes: Arc<Vec<http::Route>>, path: &str) -> Option<http::Handler> {
+    for route in routes.iter() {
         if route.path == path {
             let handler = route.handler;
             return Some(handler);

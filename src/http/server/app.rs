@@ -1,5 +1,6 @@
 use threatpool::ThreadPool;
 use std::net::TcpListener;
+use std::sync::Arc;
 use crate::http;
 use crate::http::server::connection::handle_client;
 
@@ -32,9 +33,11 @@ impl SnapAPI {
         let listener = TcpListener::bind(format!("127.0.0.1:{}", self.port)).unwrap();
         let pool = ThreadPool::new(size);
 
+        let routes = Arc::new(self.routes.clone());
+
         loop {
             let (stream, _) = listener.accept().unwrap();
-            let routes = self.routes.clone();
+            let routes = routes.clone();
 
             pool.execute(move || {
                 handle_client(stream, routes);
