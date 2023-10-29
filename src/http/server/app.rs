@@ -37,7 +37,7 @@ impl SnapAPI {
 
         loop {
             let (stream, _) = listener.accept().unwrap();
-            let routes = routes.clone();
+            let routes = Arc::clone(&routes);
 
             pool.execute(move || {
                 handle_client(stream, routes);
